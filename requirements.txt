@@ -1,6 +1,4 @@
-# usearch
-# torch
-# packaging
+torch
 ujson
 lmdb
 unidecode
@@ -10,9 +8,3 @@ huggingface_hub
 transformers
 nltk
 protobuf
-# nltk
-# numpy
-# tqdm
-# transformers
-# pytorch_transformers
-# peft
