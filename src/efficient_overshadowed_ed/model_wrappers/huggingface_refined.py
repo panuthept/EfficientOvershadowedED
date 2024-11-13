@@ -49,10 +49,16 @@ class HuggingfaceReFinED:
                     start=refined_span.start, 
                     end=refined_span.start + refined_span.ln,
                     surface_form=refined_span.text,
-                    entity=Entity(
+                    pred_entity=Entity(
                         identifier="Q0" if refined_span.predicted_entity.wikidata_entity_id is None or refined_span.entity_linking_model_confidence_score < threshold or refined_span.predicted_entity.wikidata_entity_id == "Q-1" else refined_span.predicted_entity.wikidata_entity_id,
                         confident=refined_span.entity_linking_model_confidence_score,
-                    )
+                    ),
+                    cand_entities=[
+                        Entity(
+                            identifier=wikidata_entity_id,
+                            confident=pem,
+                        ) for wikidata_entity_id, pem in refined_span.candidate_entities
+                    ]
                 ) for refined_span in refined_doc.spans
             ]
         return passages
