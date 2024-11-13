@@ -6,7 +6,7 @@ from efficient_overshadowed_ed.cft_refined_package.data_types.doc_types import D
 from efficient_overshadowed_ed.cft_refined_package.data_types.base_types import Span as ReFinED_Span
 
 
-class ReFinED:
+class HuggingfaceReFinED:
     def __init__(self, *args, **kwargs):
         self.model = Refined(*args, **kwargs)
 
