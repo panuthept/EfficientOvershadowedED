@@ -1,0 +1,18 @@
+# usearch
+# torch
+# packaging
+ujson
+lmdb
+unidecode
+boto3
+numpy
+huggingface_hub
+transformers
+nltk
+protobuf
+# nltk
+# numpy
+# tqdm
+# transformers
+# pytorch_transformers
+# peft
