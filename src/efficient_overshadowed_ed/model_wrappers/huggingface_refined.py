@@ -59,7 +59,7 @@ class HuggingfaceReFinED:
     
 
 if __name__ == "__main__":
-    model = ReFinED.from_pretrained("panuthept/CFT-ReFinED")
+    model = HuggingfaceReFinED.from_pretrained("panuthept/CFT-ReFinED")
 
     passages = [
         Passage(
