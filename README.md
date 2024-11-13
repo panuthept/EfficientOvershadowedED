@@ -43,3 +43,9 @@ print(model(passages))
     )
 ]
 ```
+
+## Evaluation
+Comming soon, we are migrating evaluation datasets to HugginFace for the quality of life.
+
+## Training
+Comming soon, we are migrating training dataset and relevant data to HugginFace for the quality of life.
