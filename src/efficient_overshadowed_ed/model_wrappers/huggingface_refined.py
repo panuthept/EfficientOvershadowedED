@@ -10,25 +10,6 @@ class HuggingfaceReFinED:
     def __init__(self, *args, **kwargs):
         self.model = Refined(*args, **kwargs)
 
-    @classmethod
-    def from_pretrained(
-        cls,
-        model_name_or_path: str,
-        cache_dir: str = "./data",
-        **kwargs,
-    ):
-        # Download model files
-        model_file_or_model = hf_hub_download(repo_id=model_name_or_path, filename="model.pt", cache_dir=cache_dir, **kwargs)
-        model_config_file_or_model_config = hf_hub_download(repo_id=model_name_or_path, filename="config.json", cache_dir=cache_dir, **kwargs)
-        model_description_embeddings_file = hf_hub_download(repo_id=model_name_or_path, filename="precomputed_entity_descriptions_emb_wikipedia_6269457-300.np", cache_dir=cache_dir, **kwargs)
-        return cls(
-            model_file_or_model=model_file_or_model,
-            model_config_file_or_model_config=model_config_file_or_model_config,
-            model_description_embeddings_file=model_description_embeddings_file,
-            data_dir=cache_dir,
-            entity_set="wikipedia",
-        )
-
     def __call__(
             self, 
             passages: List[Passage]|Passage,
@@ -62,6 +43,25 @@ class HuggingfaceReFinED:
                 ) for refined_span in refined_doc.spans
             ]
         return passages
+    
+    @classmethod
+    def from_pretrained(
+        cls,
+        model_name_or_path: str,
+        cache_dir: str = "./data",
+        **kwargs,
+    ):
+        # Download model files
+        model_file_or_model = hf_hub_download(repo_id=model_name_or_path, filename="model.pt", cache_dir=cache_dir, **kwargs)
+        model_config_file_or_model_config = hf_hub_download(repo_id=model_name_or_path, filename="config.json", cache_dir=cache_dir, **kwargs)
+        model_description_embeddings_file = hf_hub_download(repo_id=model_name_or_path, filename="precomputed_entity_descriptions_emb_wikipedia_6269457-300.np", cache_dir=cache_dir, **kwargs)
+        return cls(
+            model_file_or_model=model_file_or_model,
+            model_config_file_or_model_config=model_config_file_or_model_config,
+            model_description_embeddings_file=model_description_embeddings_file,
+            data_dir=cache_dir,
+            entity_set="wikipedia",
+        )
     
 
 if __name__ == "__main__":
